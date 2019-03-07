@@ -1,0 +1,27 @@
+{
+  "name": "roman-numeral-converter",
+  "version": "0.1.0",
+  "description": "Integer to Roman Numeral Converter",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nwoodard-cs/roman-numeral-converter.git"
+  },
+  "author": "Nicole Woodard",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/nwoodard-cs/roman-numeral-converter/issues"
+  },
+  "homepage": "https://github.com/nwoodard-cs/roman-numeral-converter#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "helmet": "^3.15.1",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
