@@ -1,45 +1,27 @@
 console.log('Loading Server...')
 
-// Load core modules
+//TODOS
+//TODO: add unit test
+
 const express = require('express')
 
-// Load expess middleware
-// const compression = require('compression')
+// Express Middleware
 const logger = require('morgan')
-// const bodyParser = require('body-parser')
 const helmet = require('helmet')
 
 let app = express()
 
-// Use the middleware
+// Use Middleware
 app.use(logger('dev'))
 app.use(helmet())
 
 // Import the Roman Numeral route
-const romanNumeralRoutes = require(`${__dirname}/app/routes/romanNumeral.js`)
-app.use('/romannumeral', romanNumeralRoutes)
-
-
-
-// app.use(compression())
-
-// app.use(bodyParser.json())
-// app.use(bodyParser.urlencoded({extended:true}))
-// app.use(favicon(`${__dirname}/public/img/favicon.ico`))
-// app.use(express.static(`${__dirname}/public`))
-
-
-// // Fix for local CORS settings in Chrome
-// app.use((req, res, next) => {
-//   res.header("Access-Control-Allow-Origin", "*")
-//   res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE")
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
-//   next()
-// })
-
+const romanNumeralRoute = require(`${__dirname}/app/routes/romanNumeral.js`)
+app.use('/romannumeral', romanNumeralRoute)
 
 // Invalid request
-app.get('*', function(req, res) {
+app.get('*', (req, res) => {
+  console.log(req.query)
   res.status(404).send('Invalid route.')
 })
 
@@ -49,7 +31,7 @@ const server = app.listen(8080, function() { // TODO: make this port a constant 
 })
 
 // Server close functions
-function shutdown() {
+const shutdown = () => {
   console.log('\nStarting Shutdown ...')
   server.close(() => {
     console.log('Shutdown complete')
