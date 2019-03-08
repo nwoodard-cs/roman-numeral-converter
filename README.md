@@ -24,7 +24,7 @@ Start the server
 ```
 npm start
 ```
-To enable reloading, instead use
+To enable hot reloading run with
 ```
 npm run dev
 ```
@@ -37,19 +37,23 @@ npm test
 ```
 
 ### Testing Methodology
-- Incorrect URI format should produce a message with `status 404`
-- All invalid inputs should produce a meaningful message with `status 400`
-- Validating query parameter
+The unit tests for this project are focused on converter functionality and error reporting.
+- Validate query parameter
     - Check endpoints: `1` and `MAX_VALUE`
     - Check handling of invalid inputs
         - Nonintegers
         - Zero
         - Negative
         - Over max
+- Check that error messages are consistently passed to route
+Network functionality has not been covered in the tests.
+Network requirements include
+- Incorrect URI format should produce a message with `status 404`
+- All invalid inputs should produce a meaningful message with `status 400`
 ### Testing Coverage Report
-Statements : 71.88% ( 23/32 )
-Branches   : 58.33% ( 7/12 )
-Lines      : 74.07% ( 20/27 )
+- Statements : 71.88% ( 23/32 )
+- Branches   : 58.33% ( 7/12 )
+- Lines      : 74.07% ( 20/27 )
 
 ## Packaging Layout
 - Configuration and JSON files are in the root directory
