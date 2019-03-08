@@ -1,8 +1,12 @@
 # Roman Numeral Converter
+Allows an integer to be converted to a roman numeral string through URI request.
+
 ## Build and Run
+
 ### Prerequisites
 - [Node.js Version 8+](https://nodejs.org/en/)
 - [Git](https://git-scm.com/downloads)
+
 ### Getting Started
 Clone the repository
 ```
@@ -22,10 +26,12 @@ npm start
 ```
 
 ## Testing 
+
 ### Running the Tests
 ```
 npm run test
 ```
+
 ### Testing Methodology
 - Testing Input
     - Check endpoints: 1 and MAX_VALUE
@@ -33,9 +39,11 @@ npm run test
         - Nonintegers
         - Zero
         - Negative
+    - All invalid inputs should produce a meaningful 400 message
+    - Incorrect URI format should produce a 404 message
 ## Packaging Layout
 ## Dependency Attribution
-- [Express](https://github.com/expressjs/express) - web framework
-- [Morgan](https://github.com/expressjs/morgan) - request logging middleware
-- [Helmet](https://github.com/helmetjs/helmet) - for simple security
-- [Nodemon](https://github.com/remy/nodemon) - developer dependency for live reloading
+- [Express](https://github.com/expressjs/express) - Web framework
+- [Morgan](https://github.com/expressjs/morgan) - Request logging middleware
+- [Helmet](https://github.com/helmetjs/helmet) - For simple security
+- [Nodemon](https://github.com/remy/nodemon) - Developer dependency for live reloading
