@@ -48,6 +48,7 @@ These tests include
         - Negative
         - Over max
 
+### Testing Gaps
 Network functionality has not been covered in the tests.
 Network requirements include
 - Incorrect URI format should produce a message with `status 404`
