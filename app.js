@@ -1,16 +1,15 @@
 console.log('Loading Server...')
 
-//TODOS
 //TODO: add unit test
 
 const express = require('express')
-
 // Express Middleware
 const logger = require('morgan')
 const helmet = require('helmet')
 
-let app = express()
+const PORT = 8080
 
+let app = express()
 // Use Middleware
 app.use(logger('dev'))
 app.use(helmet())
@@ -26,8 +25,8 @@ app.get('*', (req, res) => {
 })
 
 // Start the server
-const server = app.listen(8080, function() { // TODO: make this port a constant at the top
-  console.log(`Server listening on 127.0.0.1:8080`)    
+const server = app.listen(PORT, () => {
+  console.log(`Server listening on 127.0.0.1:${PORT}`)
 })
 
 // Server close functions
