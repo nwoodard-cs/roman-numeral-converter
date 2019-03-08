@@ -1,21 +1,17 @@
-console.log('Loading Server...')
-
-//TODO: add unit test
+console.log('Loading server...')
 
 const express = require('express')
-// Express Middleware
 const logger = require('morgan')
 const helmet = require('helmet')
 
 const PORT = 8080
 
 let app = express()
-// Use Middleware
-app.use(logger('dev'))
+app.use(logger('dev')) // :method :url :status :response-time ms - :res[content-length]
 app.use(helmet())
 
 // Import the Roman Numeral route
-const romanNumeralRoute = require(`${__dirname}/app/routes/romanNumeral.js`)
+const romanNumeralRoute = require(`${__dirname}/app/routes/romanNumeral.js`).routes
 app.use('/romannumeral', romanNumeralRoute)
 
 // Invalid request
@@ -31,7 +27,7 @@ const server = app.listen(PORT, () => {
 
 // Server close functions
 const shutdown = () => {
-  console.log('\nStarting Shutdown ...')
+  console.log('\nStarting shutdown...')
   server.close(() => {
     console.log('Shutdown complete')
     process.exit(0)

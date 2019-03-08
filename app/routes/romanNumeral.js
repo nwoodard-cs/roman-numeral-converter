@@ -23,17 +23,17 @@ const conversions = [
 routes.get('/', (req, res) => {
   // Parameters are contained in the req.query object
   const query = req.query.query 
+
   if (query === undefined) {
-    res.status(400).send('Query parameter was not supplied')
+    res.status(400).end('Query parameter was not supplied')
   }
   else {
     convertToRoman(query, (err, result) => {
-      if (err) res.status(400).send(err)
-      else res.send(result) // FIXME: getting 'can't set headers after they're sent...somehow this is being called after a res.status(400).send()
+      if (err) res.status(400).end(err)
+      else res.end(result)
     })
   }
 })
-
 
 // Converts an integer into a roman numeral
 // number (integer) => romanNumeral [string], callback(err,res)
@@ -51,7 +51,6 @@ const convertToRoman = (number, callback) => {
     }
     callback(null, romanNumeral)
   })
-
 }
 
 // Validates that input is a positive integer within range.
@@ -67,4 +66,4 @@ const checkInput = (number, callback) => {
   callback(null)  // Number is good
 }
 
-module.exports = {routes, convertToRoman, checkInput, MAX_VALUE} // FIXME: I don't want to export these when I'm running dev or prod
+module.exports = {routes, convertToRoman, checkInput, MAX_VALUE}
