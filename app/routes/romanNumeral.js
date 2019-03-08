@@ -1,35 +1,39 @@
 const routes = require('express').Router()
 
-// Converter cannot handle Vinculum
+// Converter cannot handle Vinculum, so max is V̅ - 1 
 const MAX_VALUE = 3999
 
-// Conversion table for Roman <-> Integer
+// Conversion table for Integer (integer) <-> Roman (roman)
 const conversions = [
-  { int: 1000, roman: 'M' },
-  { int: 900, roman: 'CM' },
-  { int: 500, roman: 'D' },
-  { int: 400, roman: 'CD' },
-  { int: 100, roman: 'C' },
-  { int: 90, roman: 'XC' },
-  { int: 50, roman: 'L' },
-  { int: 40, roman: 'XL' },
-  { int: 10, roman: 'X' },
-  { int: 9, roman: 'IX' },
-  { int: 5, roman: 'V' },
-  { int: 4, roman: 'IV' },
-  { int: 1, roman: 'I' }
+  { integer: 1000, roman: 'M'  },
+  { integer: 900,  roman: 'CM' },
+  { integer: 500,  roman: 'D'  },
+  { integer: 400,  roman: 'CD' },
+  { integer: 100,  roman: 'C'  },
+  { integer: 90,   roman: 'XC' },
+  { integer: 50,   roman: 'L'  },
+  { integer: 40,   roman: 'XL' },
+  { integer: 10,   roman: 'X'  },
+  { integer: 9,    roman: 'IX' },
+  { integer: 5,    roman: 'V'  },
+  { integer: 4,    roman: 'IV' },
+  { integer: 1,    roman: 'I'  }
 ]
 
 routes.get('/', (req, res) => {
   // Parameters are contained in the req.query object
   const query = req.query.query 
-  convertToRoman(query, (err, result) => {
-    if (err) res.status(400).send(err)
-    else res.send(result);
-  })
+  if (query === undefined) {
+    res.status(400).send('Query parameter was not supplied')
+  }
+  else {
+    convertToRoman(query, (err, result) => {
+      if (err) res.status(400).send(err)
+      else res.send(result) // FIXME: getting 'can't set headers after they're sent...somehow this is being called after a res.status(400).send()
+    })
+  }
 })
 
-module.exports = routes
 
 // Converts an integer into a roman numeral
 // number (integer) => romanNumeral [string], callback(err,res)
@@ -40,9 +44,9 @@ const convertToRoman = (number, callback) => {
 
     let romanNumeral = ''
     for (conversion of conversions) {
-      while (number >= conversion.int) {
+      while (number >= conversion.integer) {
         romanNumeral += conversion.roman
-        number -= conversion.int
+        number -= conversion.integer
       }
     }
     callback(null, romanNumeral)
@@ -56,9 +60,11 @@ const convertToRoman = (number, callback) => {
 const checkInput = (number, callback) => {
   // Test for invalid input
   let intToConvert = parseInt(number)
-  if (!Number.isInteger(intToConvert)) callback(`${number} is not an integer!`)
+  if (isNaN(intToConvert)) callback(`Invalid argument: ${number} is not an integer`)
   if (intToConvert < 1) callback('Input must be greater than zero')
   if (intToConvert > MAX_VALUE) callback(`Input must be less than ${MAX_VALUE + 1}`)
 
   callback(null)  // Number is good
 }
+
+module.exports = {routes, convertToRoman, checkInput, MAX_VALUE} // FIXME: I don't want to export these when I'm running dev or prod

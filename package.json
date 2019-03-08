@@ -4,9 +4,9 @@
   "description": "Integer to Roman Numeral Converter",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app",
-    "dev": "nodemon app"
+    "dev": "nodemon app",
+    "test": "mocha ./test/**/*Spec.js",
+    "start": "node app"
   },
   "repository": {
     "type": "git",
@@ -24,6 +24,7 @@
     "morgan": "^1.9.1"
   },
   "devDependencies": {
+    "mocha": "6.0.2",
     "nodemon": "^1.18.10"
   }
 }
