@@ -62,6 +62,7 @@ Network requirements include
 - Configuration and JSON files are in the root directory
 - The `/app` directory holds all other dependencies for the app.js file
 - All express routes are contained in `/app/routes` for extensibility
+- Tests are located in the `/test` directory
 ## Dependency Attribution
 - [Express](https://github.com/expressjs/express) - Web framework
 - [Morgan](https://github.com/expressjs/morgan) - Request logging middleware
