@@ -24,23 +24,33 @@ Start the server
 ```
 npm start
 ```
+To enable reloading, instead use
+```
+npm run dev
+```
 
 ## Testing 
-Unit tests are implemented in Mocha
+Unit tests are implemented in Mocha and Chai
 ### Running the Tests
 ```
-npm run test
+npm test
 ```
 
 ### Testing Methodology
 - Incorrect URI format should produce a message with `status 404`
-- Validating Query
+- All invalid inputs should produce a meaningful message with `status 400`
+- Validating query parameter
     - Check endpoints: `1` and `MAX_VALUE`
     - Check handling of invalid inputs
         - Nonintegers
         - Zero
         - Negative
-    - All invalid inputs should produce a meaningful message with `status 400`
+        - Over max
+### Testing Coverage Report
+Statements : 71.88% ( 23/32 )
+Branches   : 58.33% ( 7/12 )
+Lines      : 74.07% ( 20/27 )
+
 ## Packaging Layout
 - Configuration and JSON files are in the root directory
 - The `/app` directory holds all other dependencies for the app.js file
@@ -49,8 +59,9 @@ npm run test
 - [Express](https://github.com/expressjs/express) - Web framework
 - [Morgan](https://github.com/expressjs/morgan) - Request logging middleware
 - [Helmet](https://github.com/helmetjs/helmet) - For simple security
-## Developer Dependency Attribution
-- [Nodemon](https://github.com/remy/nodemon) - Developer dependency for live reloading
+### Developer Dependencies
+- [Nodemon](https://github.com/remy/nodemon) - Live reloading
 - [Mocha](https://github.com/mochajs/mocha) - Testing framework
-- [Chai](https://github.com/chaijs/chai) - Assertion library for testing
+- [Chai](https://github.com/chaijs/chai) - Assertion library for readability
+- [Istanbul](https://github.com/gotwarlost/istanbul) - Test coverage report generator
 
