@@ -38,14 +38,16 @@ npm test
 
 ### Testing Methodology
 The unit tests for this project are focused on converter functionality and error reporting.
-- Validate query parameter
-    - Check endpoints: `1` and `MAX_VALUE`
-    - Check handling of invalid inputs
+These tests include
+- Ensuring error messages are consistently passed to the route
+- Validating the query parameter
+    - Checking endpoints: `1` and `MAX_VALUE`
+    - Proper handling of invalid inputs
         - Nonintegers
         - Zero
         - Negative
         - Over max
-- Check that error messages are consistently passed to route
+
 Network functionality has not been covered in the tests.
 Network requirements include
 - Incorrect URI format should produce a message with `status 404`
