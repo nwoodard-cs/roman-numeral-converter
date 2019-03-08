@@ -26,22 +26,25 @@ npm start
 ```
 
 ## Testing 
-
+Unit tests are implemented in {library}
 ### Running the Tests
 ```
 npm run test
 ```
 
 ### Testing Methodology
-- Testing Input
-    - Check endpoints: 1 and MAX_VALUE
+- Incorrect URI format should produce a message with `status 404`
+- Validating Query
+    - Check endpoints: `1` and `MAX_VALUE`
     - Check handling of invalid inputs
         - Nonintegers
         - Zero
         - Negative
-    - All invalid inputs should produce a meaningful 400 message
-    - Incorrect URI format should produce a 404 message
+    - All invalid inputs should produce a meaningful message with `status 400`
 ## Packaging Layout
+- Configuration and JSON files are in the root directory
+- The `/app` directory holds all other dependencies for the app.js file
+- All express routes are contained in `/app/routes` for extensibility
 ## Dependency Attribution
 - [Express](https://github.com/expressjs/express) - Web framework
 - [Morgan](https://github.com/expressjs/morgan) - Request logging middleware
