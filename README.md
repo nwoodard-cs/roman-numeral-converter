@@ -26,7 +26,7 @@ npm start
 ```
 
 ## Testing 
-Unit tests are implemented in {library}
+Unit tests are implemented in Mocha
 ### Running the Tests
 ```
 npm run test
@@ -49,4 +49,8 @@ npm run test
 - [Express](https://github.com/expressjs/express) - Web framework
 - [Morgan](https://github.com/expressjs/morgan) - Request logging middleware
 - [Helmet](https://github.com/helmetjs/helmet) - For simple security
+## Developer Dependency Attribution
 - [Nodemon](https://github.com/remy/nodemon) - Developer dependency for live reloading
+- [Mocha](https://github.com/mochajs/mocha) - Testing framework
+- [Chai](https://github.com/chaijs/chai) - Assertion library for testing
+
