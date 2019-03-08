@@ -21,7 +21,8 @@ const conversions = [
 ]
 
 routes.get('/', (req, res) => {
-  const query = req.query.query // Parameters are assigned to req.query object
+  // Parameters are contained in the req.query object
+  const query = req.query.query 
   convertToRoman(query, (err, result) => {
     if (err) res.status(400).send(err)
     else res.send(result);
@@ -53,8 +54,8 @@ const convertToRoman = (number, callback) => {
 // number (integer?) => callback(err)
 // err will be null if number is valid
 const checkInput = (number, callback) => {
+  // Test for invalid input
   let intToConvert = parseInt(number)
-
   if (!Number.isInteger(intToConvert)) callback(`${number} is not an integer!`)
   if (intToConvert < 1) callback('Input must be greater than zero')
   if (intToConvert > MAX_VALUE) callback(`Input must be less than ${MAX_VALUE + 1}`)
